@@ -1,0 +1,67 @@
+import type { ProjectKit } from "../types";
+
+export const projects: ProjectKit[] = [
+  {
+    id: "p1",
+    name: "Student Management System",
+    slug: "student-management-system",
+    description:
+      "Complete admin UI for managing students, teachers, courses, attendance and results.",
+    category: "Education",
+    technologies: ["React", "Tailwind CSS"],
+    difficulty: "Intermediate",
+    pages: ["Login", "Dashboard", "Students", "Teachers", "Courses", "Attendance", "Results", "Settings"],
+    components: ["Admin Sidebar", "Students Table", "Stat Card Row", "Modern Student Login", "Confirm Modal"],
+    preview: `<div class="flex min-h-full gap-2 bg-slate-50 p-4"><div class="w-20 rounded-lg bg-slate-900"></div><div class="flex-1 space-y-2"><div class="h-8 rounded-lg border border-slate-200 bg-white"></div><div class="h-16 rounded-lg border border-slate-200 bg-white"></div></div></div>`,
+  },
+  {
+    id: "p2",
+    name: "Library Management System",
+    slug: "library-management-system",
+    description: "Track the catalogue, members, borrow/return flow and overdue reports.",
+    category: "Education",
+    technologies: ["React", "Tailwind CSS"],
+    difficulty: "Beginner",
+    pages: ["Login", "Dashboard", "Books", "Members", "Borrow/Return", "Reports"],
+    components: ["Students Table", "Inline Alerts", "Stat Card Row", "Confirm Modal"],
+    preview: `<div class="min-h-full bg-white p-4"><div class="grid grid-cols-4 gap-2"><div class="h-14 rounded-lg bg-slate-100"></div><div class="h-14 rounded-lg bg-slate-100"></div><div class="h-14 rounded-lg bg-slate-100"></div><div class="h-14 rounded-lg bg-slate-100"></div></div><div class="mt-2 h-10 rounded-lg border border-slate-200"></div></div>`,
+  },
+  {
+    id: "p3",
+    name: "Learning Management System",
+    slug: "learning-management-system",
+    description: "Course delivery UI with lessons, assignments, progress tracking and profiles.",
+    category: "Education",
+    technologies: ["React", "Tailwind CSS"],
+    difficulty: "Intermediate",
+    pages: ["Dashboard", "Courses", "Lessons", "Assignments", "Progress", "Profile"],
+    components: ["Course Progress Card", "Admin Sidebar", "Empty State Card", "Inline Alerts"],
+    preview: `<div class="min-h-full bg-slate-50 p-4"><div class="rounded-lg border border-slate-200 bg-white p-3"><div class="h-2 w-20 rounded bg-slate-300"></div><div class="mt-2 h-2 w-full rounded-full bg-slate-100"><div class="h-2 w-1/2 rounded-full bg-cyan-600"></div></div></div><div class="mt-2 grid grid-cols-2 gap-2"><div class="h-12 rounded-lg bg-white"></div><div class="h-12 rounded-lg bg-white"></div></div></div>`,
+  },
+  {
+    id: "p4",
+    name: "Job Portal",
+    slug: "job-portal",
+    description: "Job discovery and application flow with employer dashboard and profiles.",
+    category: "Marketplace",
+    technologies: ["React", "Tailwind CSS", "JavaScript"],
+    difficulty: "Advanced",
+    pages: ["Home", "Jobs", "Job Detail", "Applications", "Employer Dashboard", "Profile"],
+    components: ["Product Navbar", "Portfolio Project Card", "Students Table", "Contact Form"],
+    preview: `<div class="min-h-full bg-white p-4"><div class="mb-2 h-8 rounded-lg border border-slate-200"></div><div class="space-y-2"><div class="h-10 rounded-lg border border-slate-200"></div><div class="h-10 rounded-lg border border-slate-200"></div></div></div>`,
+  },
+  {
+    id: "p5",
+    name: "E-commerce Storefront",
+    slug: "ecommerce-storefront",
+    description: "Shopping experience from product browsing through checkout and order history.",
+    category: "E-commerce",
+    technologies: ["React", "Tailwind CSS", "JavaScript"],
+    difficulty: "Advanced",
+    pages: ["Home", "Products", "Product Detail", "Cart", "Checkout", "Orders"],
+    components: ["Product Navbar", "Pricing Card", "Confirm Modal", "Site Footer"],
+    preview: `<div class="min-h-full bg-slate-50 p-4"><div class="grid grid-cols-3 gap-2"><div class="h-16 rounded-lg bg-white"></div><div class="h-16 rounded-lg bg-white"></div><div class="h-16 rounded-lg bg-white"></div></div><div class="mt-2 h-8 rounded-lg bg-slate-900"></div></div>`,
+  },
+];
+
+export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
