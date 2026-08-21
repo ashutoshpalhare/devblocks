@@ -14,6 +14,7 @@ import { Route as AiBuilderRouteImport } from './routes/ai-builder'
 import { Route as FavoritesRouteImport } from './routes/favorites'
 import { Route as PlaygroundRouteImport } from './routes/playground'
 import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as StarterRouteImport } from './routes/starter'
 import { Route as TemplatesRouteImport } from './routes/templates'
 import { Route as ComponentsIndexRouteImport } from './routes/components.index'
 import { Route as ComponentsSlugRouteImport } from './routes/components.$slug'
@@ -43,6 +44,11 @@ const PlaygroundRoute = PlaygroundRouteImport.update({
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StarterRoute = StarterRouteImport.update({
+  id: '/starter',
+  path: '/starter',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TemplatesRoute = TemplatesRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/favorites': typeof FavoritesRoute
   '/playground': typeof PlaygroundRoute
   '/projects': typeof ProjectsRoute
+  '/starter': typeof StarterRoute
   '/templates': typeof TemplatesRoute
   '/components/$slug': typeof ComponentsSlugRoute
   '/learn/$slug': typeof LearnSlugRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/favorites': typeof FavoritesRoute
   '/playground': typeof PlaygroundRoute
   '/projects': typeof ProjectsRoute
+  '/starter': typeof StarterRoute
   '/templates': typeof TemplatesRoute
   '/components/$slug': typeof ComponentsSlugRoute
   '/learn/$slug': typeof LearnSlugRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/favorites': typeof FavoritesRoute
   '/playground': typeof PlaygroundRoute
   '/projects': typeof ProjectsRoute
+  '/starter': typeof StarterRoute
   '/templates': typeof TemplatesRoute
   '/components/$slug': typeof ComponentsSlugRoute
   '/learn/$slug': typeof LearnSlugRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/favorites'
     | '/playground'
     | '/projects'
+    | '/starter'
     | '/templates'
     | '/components/$slug'
     | '/learn/$slug'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/favorites'
     | '/playground'
     | '/projects'
+    | '/starter'
     | '/templates'
     | '/components/$slug'
     | '/learn/$slug'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/favorites'
     | '/playground'
     | '/projects'
+    | '/starter'
     | '/templates'
     | '/components/$slug'
     | '/learn/$slug'
@@ -153,6 +165,7 @@ export interface RootRouteChildren {
   FavoritesRoute: typeof FavoritesRoute
   PlaygroundRoute: typeof PlaygroundRoute
   ProjectsRoute: typeof ProjectsRoute
+  StarterRoute: typeof StarterRoute
   TemplatesRoute: typeof TemplatesRoute
   ComponentsSlugRoute: typeof ComponentsSlugRoute
   LearnSlugRoute: typeof LearnSlugRoute
@@ -195,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/projects'
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/starter': {
+      id: '/starter'
+      path: '/starter'
+      fullPath: '/starter'
+      preLoaderRoute: typeof StarterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/templates': {
@@ -241,6 +261,7 @@ const rootRouteChildren: RootRouteChildren = {
   FavoritesRoute: FavoritesRoute,
   PlaygroundRoute: PlaygroundRoute,
   ProjectsRoute: ProjectsRoute,
+  StarterRoute: StarterRoute,
   TemplatesRoute: TemplatesRoute,
   ComponentsSlugRoute: ComponentsSlugRoute,
   LearnSlugRoute: LearnSlugRoute,
