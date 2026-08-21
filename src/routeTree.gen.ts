@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AiBuilderRouteImport } from './routes/ai-builder'
 import { Route as FavoritesRouteImport } from './routes/favorites'
 import { Route as PlaygroundRouteImport } from './routes/playground'
 import { Route as ProjectsRouteImport } from './routes/projects'
@@ -22,6 +23,11 @@ import { Route as LearnSlugRouteImport } from './routes/learn.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiBuilderRoute = AiBuilderRouteImport.update({
+  id: '/ai-builder',
+  path: '/ai-builder',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FavoritesRoute = FavoritesRouteImport.update({
@@ -67,6 +73,7 @@ const LearnSlugRoute = LearnSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai-builder': typeof AiBuilderRoute
   '/favorites': typeof FavoritesRoute
   '/playground': typeof PlaygroundRoute
   '/projects': typeof ProjectsRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai-builder': typeof AiBuilderRoute
   '/favorites': typeof FavoritesRoute
   '/playground': typeof PlaygroundRoute
   '/projects': typeof ProjectsRoute
@@ -90,6 +98,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai-builder': typeof AiBuilderRoute
   '/favorites': typeof FavoritesRoute
   '/playground': typeof PlaygroundRoute
   '/projects': typeof ProjectsRoute
@@ -103,6 +112,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/ai-builder'
     | '/favorites'
     | '/playground'
     | '/projects'
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/ai-builder'
     | '/favorites'
     | '/playground'
     | '/projects'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/ai-builder'
     | '/favorites'
     | '/playground'
     | '/projects'
@@ -137,6 +149,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiBuilderRoute: typeof AiBuilderRoute
   FavoritesRoute: typeof FavoritesRoute
   PlaygroundRoute: typeof PlaygroundRoute
   ProjectsRoute: typeof ProjectsRoute
@@ -154,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-builder': {
+      id: '/ai-builder'
+      path: '/ai-builder'
+      fullPath: '/ai-builder'
+      preLoaderRoute: typeof AiBuilderRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/favorites': {
@@ -217,6 +237,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiBuilderRoute: AiBuilderRoute,
   FavoritesRoute: FavoritesRoute,
   PlaygroundRoute: PlaygroundRoute,
   ProjectsRoute: ProjectsRoute,
