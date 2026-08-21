@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FavoritesRouteImport } from './routes/favorites'
+import { Route as PlaygroundRouteImport } from './routes/playground'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as TemplatesRouteImport } from './routes/templates'
+import { Route as ComponentsIndexRouteImport } from './routes/components.index'
+import { Route as ComponentsSlugRouteImport } from './routes/components.$slug'
+import { Route as LearnIndexRouteImport } from './routes/learn.index'
+import { Route as LearnSlugRouteImport } from './routes/learn.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlaygroundRoute = PlaygroundRouteImport.update({
+  id: '/playground',
+  path: '/playground',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TemplatesRoute = TemplatesRouteImport.update({
+  id: '/templates',
+  path: '/templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsIndexRoute = ComponentsIndexRouteImport.update({
+  id: '/components/',
+  path: '/components/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComponentsSlugRoute = ComponentsSlugRouteImport.update({
+  id: '/components/$slug',
+  path: '/components/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnIndexRoute = LearnIndexRouteImport.update({
+  id: '/learn/',
+  path: '/learn/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnSlugRoute = LearnSlugRouteImport.update({
+  id: '/learn/$slug',
+  path: '/learn/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
+  '/playground': typeof PlaygroundRoute
+  '/projects': typeof ProjectsRoute
+  '/templates': typeof TemplatesRoute
+  '/components/$slug': typeof ComponentsSlugRoute
+  '/learn/$slug': typeof LearnSlugRoute
+  '/components/': typeof ComponentsIndexRoute
+  '/learn/': typeof LearnIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
+  '/playground': typeof PlaygroundRoute
+  '/projects': typeof ProjectsRoute
+  '/templates': typeof TemplatesRoute
+  '/components/$slug': typeof ComponentsSlugRoute
+  '/learn/$slug': typeof LearnSlugRoute
+  '/components': typeof ComponentsIndexRoute
+  '/learn': typeof LearnIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
+  '/playground': typeof PlaygroundRoute
+  '/projects': typeof ProjectsRoute
+  '/templates': typeof TemplatesRoute
+  '/components/$slug': typeof ComponentsSlugRoute
+  '/learn/$slug': typeof LearnSlugRoute
+  '/components/': typeof ComponentsIndexRoute
+  '/learn/': typeof LearnIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/favorites'
+    | '/playground'
+    | '/projects'
+    | '/templates'
+    | '/components/$slug'
+    | '/learn/$slug'
+    | '/components/'
+    | '/learn/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/favorites'
+    | '/playground'
+    | '/projects'
+    | '/templates'
+    | '/components/$slug'
+    | '/learn/$slug'
+    | '/components'
+    | '/learn'
+  id:
+    | '__root__'
+    | '/'
+    | '/favorites'
+    | '/playground'
+    | '/projects'
+    | '/templates'
+    | '/components/$slug'
+    | '/learn/$slug'
+    | '/components/'
+    | '/learn/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FavoritesRoute: typeof FavoritesRoute
+  PlaygroundRoute: typeof PlaygroundRoute
+  ProjectsRoute: typeof ProjectsRoute
+  TemplatesRoute: typeof TemplatesRoute
+  ComponentsSlugRoute: typeof ComponentsSlugRoute
+  LearnSlugRoute: typeof LearnSlugRoute
+  ComponentsIndexRoute: typeof ComponentsIndexRoute
+  LearnIndexRoute: typeof LearnIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/playground': {
+      id: '/playground'
+      path: '/playground'
+      fullPath: '/playground'
+      preLoaderRoute: typeof PlaygroundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/templates': {
+      id: '/templates'
+      path: '/templates'
+      fullPath: '/templates'
+      preLoaderRoute: typeof TemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/': {
+      id: '/components/'
+      path: '/components'
+      fullPath: '/components/'
+      preLoaderRoute: typeof ComponentsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/components/$slug': {
+      id: '/components/$slug'
+      path: '/components/$slug'
+      fullPath: '/components/$slug'
+      preLoaderRoute: typeof ComponentsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn/': {
+      id: '/learn/'
+      path: '/learn'
+      fullPath: '/learn/'
+      preLoaderRoute: typeof LearnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn/$slug': {
+      id: '/learn/$slug'
+      path: '/learn/$slug'
+      fullPath: '/learn/$slug'
+      preLoaderRoute: typeof LearnSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FavoritesRoute: FavoritesRoute,
+  PlaygroundRoute: PlaygroundRoute,
+  ProjectsRoute: ProjectsRoute,
+  TemplatesRoute: TemplatesRoute,
+  ComponentsSlugRoute: ComponentsSlugRoute,
+  LearnSlugRoute: LearnSlugRoute,
+  ComponentsIndexRoute: ComponentsIndexRoute,
+  LearnIndexRoute: LearnIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
