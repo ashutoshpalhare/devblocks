@@ -52,24 +52,33 @@ function Index() {
 
   return (
     <SiteShell>
-      <section className="grid-bg border-b border-border">
-        <div className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:py-24">
+      <section className="grid-bg relative overflow-hidden border-b border-border">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-40 left-1/2 h-[32rem] w-[52rem] -translate-x-1/2 rounded-full bg-primary/15 blur-[120px]"
+        />
+        <div className="relative mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
                 <Blocks className="h-3.5 w-3.5 text-primary" /> Free forever · No sign-up to copy
               </span>
-              <h1 className="mt-6 max-w-3xl text-4xl font-bold leading-[1.05] sm:text-6xl">
-                Build. Learn. Ship.
+              <h1 className="mt-6 max-w-3xl font-display text-5xl font-bold leading-[1.02] tracking-tight sm:text-7xl">
+                Build.{" "}
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  Learn.
+                </span>{" "}
+                Ship.
               </h1>
-              <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
                 DevBlocks is a free Tailwind UI library for CS students, beginner developers and
-                teachers — with live previews, copy-ready code and lessons that explain every block.
+                teachers — live previews, copy-ready code and short lessons that explain every
+                block you paste.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   to="/components"
-                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+                  className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-transform hover:-translate-y-0.5"
                 >
                   Browse components <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -79,7 +88,22 @@ function Index() {
                 >
                   <FileCode2 className="h-4 w-4" /> Get the starter
                 </Link>
+                <Link
+                  to="/playground"
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <Zap className="h-4 w-4 text-primary" /> Try the playground
+                </Link>
               </div>
+              <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
+                {["Copy-paste Tailwind", "No dependencies", "Dark mode ready", "MIT licensed"].map(
+                  (item) => (
+                    <li key={item} className="inline-flex items-center gap-2">
+                      <Sparkles className="h-3.5 w-3.5 text-primary" /> {item}
+                    </li>
+                  ),
+                )}
+              </ul>
               <dl className="mt-12 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4">
                 {[
                   [components.length + "+", "UI components"],
@@ -95,11 +119,22 @@ function Index() {
               </dl>
             </div>
             <div className="hidden lg:block">
-              <PreviewPane html={STARTER_PREVIEW} height="h-[24rem]" className="shadow-lg" />
+              <div className="rounded-2xl border border-border bg-card p-2 shadow-2xl shadow-primary/5">
+                <div className="flex items-center gap-1.5 px-3 py-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
+                  <span className="ml-2 font-mono text-xs text-muted-foreground">
+                    starter-template.html
+                  </span>
+                </div>
+                <PreviewPane html={STARTER_PREVIEW} height="h-[24rem]" />
+              </div>
             </div>
           </div>
         </div>
       </section>
+
 
       <section className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6">
         <h2 className="text-2xl font-bold">The DevBlocks loop</h2>
